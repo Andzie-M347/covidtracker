@@ -1,0 +1,218 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Lato',
+        sans-serif;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, .7);
+    background-color: #F2F3F7;
+}
+
+/********************************
+** Intro Section
+*/
+
+.status-section {
+    background-color: #fff;
+    padding: calc(107px/2) 2.5rem;
+    max-width: 1170px;
+    margin: auto;
+    box-shadow: 0 4px 8px #bec1e057;
+    border-radius: 1rem;
+    margin-top: 2rem;
+
+    &__row {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .status-box {
+        display: flex;
+        width: 33%;
+        align-items: center;
+        justify-content: center;
+
+        &:first-of-type {
+            svg {
+                fill: #d387ab;
+            }
+        }
+
+        &__icon {
+            margin-right: 2rem;
+
+            svg {
+                height: 3.325rem;
+                width: 3.325rem;
+                fill: #e899dc;
+
+            }
+        }
+    }
+}
+
+
+// Material UI
+
+.MuiSelect-selectMenu,
+.MuiButtonBase-root.MuiListItem-root {
+    font-size: 1.6rem !important;
+    font-family: 'Lato',
+        sans-serif !important;
+}
+
+
+/********************************
+** Stats Section
+*/
+
+
+.stats-section {
+    margin-top: 3.5rem;
+
+    &__row {
+        max-width: 1170px;
+        margin: auto;
+        display: flex;
+    }
+
+
+    &__left,
+    &__right {
+        box-shadow: 0 4px 8px #bec1e057;
+        border-radius: 1rem;
+        background: #fff;
+        padding: 2rem;
+    }
+
+    &__left {
+        flex: 1;
+        margin-right: 1.5rem;
+        overflow-y: scroll;
+        padding-top: 3.35rem;
+        height: 65rem;
+
+        &::-webkit-scrollbar {
+            width: .5em;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #fff;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #e899dc;
+            background-image: linear-gradient(315deg, #e899dc 0%, #d387ab 74%);
+            border-radius: 90px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 2rem;
+        }
+    }
+
+    &__right {
+        flex: 0 0 66.66666667%;
+    }
+
+}
+
+
+/********************************
+** Main Sidebar
+*/
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    height: 4.4rem;
+    padding: .75rem;
+
+
+    &__global {
+        padding: .75rem;
+        display: flex;
+        justify-content: space-between;
+        border-radius: .5rem;
+        border: 1px solid #262C7C;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+
+
+    }
+
+    &:nth-child(odd) {
+        background-color: #f2f3f7;
+    }
+
+    td {
+        display: flex;
+
+    }
+
+    &__country-flag {
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 1rem;
+            margin-right: 1.5rem;
+        }
+    }
+
+
+
+}
+
+
+// MAP RESET
+.leaflet-zoom-animated path {
+    fill: #FF3E29;
+    stroke-opacity: 0;
+}
+
+.popup {
+    display: flex;
+    justify-content: space-between;
+
+    &__flag {
+        height: 4rem;
+        width: 4rem;
+        border-radius: .5rem;
+        box-shadow: 0 4px 8px #bec1e057;
+        background-size: cover;
+        background-position: center;
+        margin-right: .735rem;
+    }
+
+    &__name {
+        margin-bottom: .5rem;
+    }
+
+    &__recovered {
+        color: #7DD71D;
+    }
+
+    &__deaths {
+        color: #ff3e29;
+    }
+
+    &__active {
+        color: rgb(233, 155, 12);
+    }
+}
