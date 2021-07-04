@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { MenuItem, FormControl, Select } from '@material-ui/core';
-import StatusBox from './components/StatusBox';
+import StatusBox from '../StatusBox';
 import { GiWireframeGlobe } from 'react-icons/all';
-import Sidebar from './components/Sidebar';
-import Map from './components/Map';
-import {sortData } from './helpers';
+import Sidebar from '../Sidebar';
+import Map from '../Map';
+import {sortData, numberWithCommas  } from '../../helpers';
 import "leaflet/dist/leaflet.css";
+import '../../assets/styles/main.css';
+import {VscCircleFilled} from 'react-icons/vsc';
 
-import './assets/styles/main.css';
-function App() {
+function Dashboard() {
 
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('global');
@@ -17,7 +18,9 @@ function App() {
   const [mapCenter, setMapCenter] = useState({lat: 34.80746, lng: -40.4796});
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
-  const [casesType, setCasesType] = useState("cases");
+  const [affected, setAffected] = useState("cases");
+  const [global, setGlobal] = useState([]);
+  
 
   useEffect( () => {
     const getCountries = async () => {
@@ -36,7 +39,7 @@ function App() {
 
           const sortedData = sortData(data);
           
-          setSidebarData(sortedData.splice(0, 12));
+          setSidebarData(sortedData.splice(0, 10));
           setCountries(countries);
           setMapCountries(data);
       })
@@ -54,6 +57,7 @@ function App() {
           .then((response) => response.json())
           .then(data => {
               setCountryInfo(data);
+              setGlobal(data.cases)
           })
           .catch(err => {
             console.error(err);
@@ -84,8 +88,8 @@ function App() {
    };
 
 
-  return (
-    <div className="App">
+    return (
+        <>
         {/* Intro section */}
         <section className="status-section">
           <div className="status-section__row">
@@ -98,16 +102,16 @@ function App() {
                   <FormControl>
                     <Select value={country} onChange={handleCountryChange}>
                       <MenuItem value="global">Global</MenuItem>
-                      {countries.map( country => {
-                        return <MenuItem  value={country.value}>{country.name} {country.updated} </MenuItem>
+                      {countries.map( (country, index) => {
+                        return <MenuItem key={index} value={country.value}>{country.name} {country.updated} </MenuItem>
                       })}
                     </Select>
                   </FormControl>
                 </div>
               </div>
-              <StatusBox title="Total Covid-19 Cases" total={countryInfo.cases} />
-              <StatusBox title="Total Recovered" total={countryInfo.recovered} />
-              <StatusBox title="Total Deaths" total={countryInfo.deaths} />
+              <StatusBox title="Total Covid-19 Cases" total={ numberWithCommas(countryInfo.cases)} />
+              <StatusBox title="Total Recovered" total={ numberWithCommas(countryInfo.recovered)} />
+              <StatusBox title="Total Deaths" total={ numberWithCommas(countryInfo.deaths)} />
           </div> 
         </section>
 
@@ -115,15 +119,30 @@ function App() {
         <section className="stats-section">
           <div className="stats-section__row">
           <aside className="stats-section__left">
-            <Sidebar countries={sidebarData} total={countryInfo.cases}   />
+            <Sidebar countries={sidebarData} total={countryInfo.cases} global={global} handleCountryChange={handleCountryChange}/>
           </aside>
           <article className="stats-section__right">
-            <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} casesType={casesType} />
+                    <header className="map__header">
+                <h4 className="map__header--title">Covid-19 Infected Areas</h4>
+                <div className="map__header--legend">
+                    <div onClick={(e) => setAffected('most')}>
+                        <VscCircleFilled />
+                        <span>Most affected</span>
+                    </div>
+                    <div onClick={(e) => setAffected('least')}>
+                         <VscCircleFilled id="second" />
+                         <span>Least affected</span>
+                    </div>
+                    
+                </div>
+            </header>
+            <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} affected={affected} />
           </article>
           </div>
         </section>
-    </div>
-  );
+
+        </>
+    )
 }
 
-export default App;
+export default Dashboard;

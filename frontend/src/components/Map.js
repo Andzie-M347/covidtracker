@@ -3,7 +3,7 @@ import {MapContainer, TileLayer, useMap} from 'react-leaflet';
 import { showDataOnMap } from '../helpers';
 import './Map.css';
 
-function Map({countries, casesType, center, zoom}) {
+function Map({countries, affected, center, zoom, setAffected}) {
     function ChangeView({ center, zoom }) {
     const map = useMap();
     map.setView(center, zoom);
@@ -12,11 +12,12 @@ function Map({countries, casesType, center, zoom}) {
 
     return (
         <div className="map">
-            <h4 className="map__title">Covid-19 Infected Areas</h4>
+    
+            
              <MapContainer 
              center={center} 
              zoom={zoom} 
-             cases={casesType}
+             cases={affected}
              scrollWheelZoom={false}
              >
             
@@ -27,7 +28,7 @@ function Map({countries, casesType, center, zoom}) {
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
 
-                {showDataOnMap(countries, casesType)}
+                {showDataOnMap(countries, affected)}
              </MapContainer>
         </div>
     )

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { RiVirusLine} from 'react-icons/all';
 
-function StatusBox({title, total, cases, deaths}) {
+function StatusBox({title, total}) {
+    // const [data, setData] = useState([]);
 
-    // const numberWithCommas = (value) => {
-    //     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    // }
+    useEffect(() =>{
+        const last20Days = async() => {
+            await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+        }
+
+
+        last20Days();
+     
+    }, []);
+
 
     return (
         <div className="status-box">

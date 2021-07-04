@@ -1,0 +1,380 @@
+:root {
+    --accent-color: #e899dc;
+    --alt-color: #d387ab;
+    --danger-color: #FF3E29;
+    --success-color: #00DB75;
+    --text-color: rgba(0, 0, 0, .7);
+    --accent-grey: #bec1e057;
+    --border-radius: .5rem;
+    --shadow: 0 4px 8px var(--accent-grey);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import 'pages/donate';
+@import 'utils/container',
+'utils/base';
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Lato',
+        sans-serif;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, .7);
+    background-color: #F2F3F7;
+}
+
+
+/*******************************
+**** Box Shadow
+*/
+
+.MuiPaper-elevation8 {
+    box-shadow: var(--shadow) !important;
+}
+
+/********************************
+** Intro Section
+*/
+
+
+/********************************
+** Header 
+*/
+
+
+.site-header {
+    margin-bottom: 4.345rem;
+    // background: #262C7C;
+    color: #fff;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0 1.5rem;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2em 0;
+        max-width: 1170px;
+        margin: auto;
+
+        // TEMP
+       
+        h4 {
+              color: rgba(0, 0, 0, .7);
+        }
+
+        &__cat {
+
+            &--link {
+                color: rgba(0, 0, 0, .7);
+                font-weight: 600;
+                font-size: 1.65rem;
+
+                &:first-child {
+                    display: inline-block;
+                }
+
+
+                svg {
+                    margin-right: 7px;
+                }
+            }
+
+
+            &--button {
+                background-color: var(--accent-color);
+                background-image: linear-gradient(315deg, var(--accent-color) 0%, var(--alt-color) 74%);
+                padding: 1.435rem 4.475rem;
+                box-shadow: var(--shadow);
+                border-radius: 9rem;
+                font-weight: 600;
+                font-size: 1.65rem;
+            }
+        }
+    }
+}
+
+.status-section {
+    background-color: #fff;
+    padding: calc(107px/2) 2.5rem;
+    max-width: 1170px;
+    margin: auto;
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+    margin-top: 2rem;
+
+    &__row {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .status-box {
+        display: flex;
+        width: 33%;
+        align-items: center;
+        justify-content: center;
+
+        &:first-of-type {
+            svg {
+                fill: var(--alt-color);
+            }
+        }
+
+        &__icon {
+            margin-right: 2rem;
+
+            svg {
+                height: 3.325rem;
+                width: 3.325rem;
+                fill: var(--accent-color);
+
+            }
+        }
+    }
+}
+
+
+// Material UI
+
+.MuiSelect-selectMenu,
+.MuiButtonBase-root.MuiListItem-root {
+    font-size: 1.6rem !important;
+    font-family: 'Lato',
+        sans-serif !important;
+}
+
+
+/********************************
+** Stats Section
+*/
+
+
+.stats-section {
+    margin-top: 3.5rem;
+
+    &__row {
+        max-width: 1170px;
+        margin: auto;
+        display: flex;
+    }
+
+
+    &__left,
+    &__right {
+        box-shadow: var(--shadow);
+        border-radius: 1rem;
+        background: #fff;
+        padding: 2rem;
+    }
+
+    &__left {
+        flex: 1;
+        margin-right: 1.5rem;
+        height: 65rem;
+
+        table {
+            width: 100%;
+            // margin-top: 2rem;
+        }
+    }
+
+    &__right {
+        flex: 0 0 66.66666667%;
+    }
+
+}
+
+
+/********************************
+** Main Sidebar
+*/
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    height: 4.4rem;
+    padding: .75rem;
+
+
+    &__header {
+        margin-bottom: 1.235rem;
+    }
+
+
+    &__global {
+        padding: .75rem;
+        display: flex;
+        justify-content: space-between;
+        border-radius: var(--border-radius);
+        border: 1px solid #262C7C;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &:nth-child(odd) {
+        background-color: #f2f3f7;
+    }
+
+    td {
+        display: flex;
+
+    }
+
+    &__country-flag {
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 1rem;
+            margin-right: 1.5rem;
+        }
+    }
+
+
+
+}
+
+
+.map {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // margin-bottom: 2rem;
+        margin-top: 1.5rem;
+
+        &--legend {
+            display: flex;
+            align-items: center;
+
+            >div {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all .2s ease-in;
+            }
+
+            svg {
+                margin-right: 1.2rem;
+                position: relative;
+
+                &:first-child {
+                    height: 3rem;
+                    width: 3rem;
+                    stroke-width: .5;
+                    stroke: var(--danger-color);
+                    fill: var(--danger-color);
+                    fill-opacity: .54
+                }
+
+                &::before {
+                    content: 'hello';
+                }
+            }
+
+            #second {
+                height: 3rem;
+                width: 3rem;
+                stroke-width: 1;
+                stroke: var(--success-color);
+                fill: var(--success-color);
+                fill-opacity: .54
+            }
+
+            div:first-of-type {
+                margin-right: 2rem;
+
+                &:hover {
+                    color: var(--danger-color);
+                }
+            }
+
+            div:last-of-type {
+                &:hover {
+                    color: var(--success-color);
+                }
+            }
+
+        }
+    }
+}
+
+
+// MAP RESET
+.leaflet-zoom-animated path {
+    fill: var(--danger-color);
+    stroke-opacity: 0;
+}
+
+.popup {
+    display: flex;
+    justify-content: space-between;
+
+    &__flag {
+        height: 4rem;
+        width: 4rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        background-size: cover;
+        background-position: center;
+        margin-right: .735rem;
+    }
+
+    &__confirmed-cases {
+        color: var(--accent-grey);
+    }
+
+    &__name {
+        margin-bottom: .5rem;
+    }
+
+    &__recovered {
+        color: var(--success-color);
+    }
+
+    &__deaths {
+        color: var(--danger-color);
+    }
+
+    &__active {
+        color: rgb(233, 155, 12);
+    }
+}
+
+
+.MuiInput-underline:before {
+    display: none;
+}
+
+
+.MuiMenu-paper {
+    &::-webkit-scrollbar {
+        width: .745rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--accent-color);
+        background-image: linear-gradient(315deg, var(--accent-color) 0%, var(--alt-color) 74%);
+        border-radius: 90px;
+    }
+}

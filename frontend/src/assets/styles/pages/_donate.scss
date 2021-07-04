@@ -1,0 +1,164 @@
+.donate-page {
+
+    padding: 12rem 0;
+
+    &__row {
+        display: flex;
+    }
+
+    &__left {
+        position: relative;
+
+        &--pattern {
+            top: 0px;
+            left: -3.745rem;
+            z-index: 0;
+            transform: translate3d(0px, 20px, 0px);
+            background-image: radial-gradient(var(--accent-color), 2px, transparent 2.5px);
+            background-size: 1.75rem 1.75rem;
+            position: absolute;
+            opacity: 0.3;
+            height: 18rem;
+            width: 18rem;
+        }
+
+        @media (min-width: 992px) {
+            flex: 0 0 auto;
+            width: 58.33333%;
+        }
+    }
+
+    &__right {
+        padding: 5rem 0 3.5rem 3.5rem;
+
+
+        @media (min-width: 992px) {
+            flex: 0 0 auto;
+            width: 41.66667%;
+        }
+    }
+
+
+    .image-decor {
+        &__row {
+            display: flex;
+        }
+
+        &__right,
+        &__left {
+            z-index: 1;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+
+            @media (min-width: 768px) {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+        }
+
+
+        &__left {
+            &--image {
+                margin-top: 5.345rem;
+            }
+
+
+            figure {
+
+                @media (min-width: 768px) {
+                    flex: 0 0 auto;
+                    width: 100%;
+                    order: 2 !important;
+                }
+            }
+        }
+
+
+
+
+        .stats {
+            padding: 6rem 3rem;
+            text-align: center;
+            background-color: var(--accent-grey);
+            border-radius: 1rem;
+
+            @media (min-width: 768px) {
+                flex: 0 0 auto;
+                width: 83.33333%;
+                margin-bottom: 2.5rem;
+            }
+        }
+    }
+
+
+    // Donations unested styles
+
+    .donations {
+        &__footer {
+            
+            footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 2rem;
+            }
+
+
+            .donations-button {
+                margin-right: 1.5rem;
+                border: 0;
+                outline: 0;
+                padding: 3.5rem;
+                border-radius: 1rem;
+                background: #fff;
+                box-shadow: var(--shadow);
+                // display: inline-block;
+
+                &__icon {
+                    margin-right: 2rem;
+                    display: inline-block;
+                    height: 4.5rem;
+                    line-height: 4.5rem;
+                    width: 4.5rem;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: #169ad7b2;
+
+                    svg {
+                        height: 2.5rem;
+                        width: 2.5rem;
+                        margin-top: .5rem;
+                        fill: #253B80;
+                    }
+
+
+                }
+
+                &__title {
+                    font-weight: 600;
+                    font-size: 2.345rem;
+                }
+
+
+
+
+
+
+            }
+
+
+        }
+
+
+        &__stripe {
+            .donations-button__icon {
+                background-color: #f79f1b91;
+
+                svg {
+                    fill: #ff5f00;
+                }
+            }
+        }
+
+    }
+}

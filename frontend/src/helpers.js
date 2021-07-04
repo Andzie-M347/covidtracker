@@ -32,9 +32,17 @@ export const sortData = (data) => {
 };
 
 
+export const numberWithCommas = (value) => {
+  return value ?  value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
+}
+
+
+
+
 export const showDataOnMap = (data, casesType) =>
-  data.map((country) => (
+  data.map((country, index) => (
     <Circle
+      key={index}
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.54}
       
