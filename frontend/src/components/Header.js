@@ -17,7 +17,7 @@ function Header() {
                         <RiShareLine />
                         Share 
                     </a>
-                    <Link to="/donate" className="navigation__cat--button" >
+                    <Link to="/donate" className="primary-button" >
                         Donate &rarr;
                     </Link>
                 </div>

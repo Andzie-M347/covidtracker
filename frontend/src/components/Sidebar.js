@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from "numeral";
 import { numberWithCommas } from '../helpers';
 
 function Sidebar({countries, global}) {
@@ -33,7 +34,7 @@ function Sidebar({countries, global}) {
                                 <strong> {country.country} </strong>
                             </span>
                         </td>
-                        <td>{numberWithCommas(country.cases)}</td>
+                        <td> {numeral(country.cases).format("0,0")} </td>
                     </tr>
                     
                     </React.Fragment>

@@ -6,24 +6,14 @@ import numeral from "numeral";
 const casesTypeColors = {
   cases: {
     hex: "#FF3E29",
-    // rgb: "rgb(204,16,52)",
-    // half_op: "rgba(204,16,52,0.5)",
     mulitiplier: 800,
   },
 
   recovered: {
-    hex: "#7DD71D",
-    // rgb: "rgb(125,215,29)",
-    // half_op: "rgba(125,215,29,0.5)",
-    mulitiplier: 1200,
+    hex: "#00DB75",
+    mulitiplier: 950,
   },
 
-  deaths: {
-    hex: "#C0C0C0",
-    // rgb: "rgb(251,68,67)",
-    // half_op: "rgba(251,68,67,0.5)",
-    mulitiplier: 2000,
-  },
 };
 
 export const sortData = (data) => {
@@ -33,13 +23,15 @@ export const sortData = (data) => {
 
 
 export const numberWithCommas = (value) => {
-  return value ?  value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
+  // return value ?  value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
+
+  return value ? `${numeral(value).format('0.0a')}` : '';
 }
 
 
 
 
-export const showDataOnMap = (data, casesType) =>
+export const showDataOnMap = (data, affected) =>
   data.map((country, index) => (
     <Circle
       key={index}
@@ -47,13 +39,13 @@ export const showDataOnMap = (data, casesType) =>
       fillOpacity={0.54}
       
       pathOptions={{
-        color: casesTypeColors[casesType].hex,
-        fillColor: casesTypeColors[casesType].hex,
+        color: casesTypeColors[affected].hex,
+        fillColor: casesTypeColors[affected].hex,
        
       }}
       radius={
-        Math.sqrt(country[casesType] / 10) *
-        casesTypeColors[casesType].mulitiplier
+        Math.sqrt(country[affected] / 10) *
+        casesTypeColors[affected].mulitiplier
       }
     >
       <Popup>
@@ -65,12 +57,14 @@ export const showDataOnMap = (data, casesType) =>
 
               <article>
                 <div className="popup__name"><strong> {country.country} </strong></div>
+
+                {affected === 'cases' ? 
                 <div className="popup__confirmed-cases">
                   Cases: {numeral(country.cases).format("0,0")}
-                </div>
+                </div> :
                 <div className="popup__recovered">
                   Recovered: {numeral(country.recovered).format("0,0")}
-                </div>
+                </div> }
                 <div className="popup__active">
                   Active: {numeral(country.active).format("0,0")}
                 </div>

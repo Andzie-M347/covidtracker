@@ -7,7 +7,8 @@ import Map from '../Map';
 import {sortData, numberWithCommas  } from '../../helpers';
 import "leaflet/dist/leaflet.css";
 import '../../assets/styles/main.css';
-import {VscCircleFilled} from 'react-icons/vsc';
+
+
 
 function Dashboard() {
 
@@ -20,10 +21,14 @@ function Dashboard() {
   const [mapCountries, setMapCountries] = useState([]);
   const [affected, setAffected] = useState("cases");
   const [global, setGlobal] = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
   
 
   useEffect( () => {
     const getCountries = async () => {
+
+      setLoadingData(true);
+
       await fetch('https://disease.sh/v3/covid-19/countries')
       .then((response) => response.json())
       .then(data => {
@@ -42,6 +47,8 @@ function Dashboard() {
           setSidebarData(sortedData.splice(0, 10));
           setCountries(countries);
           setMapCountries(data);
+
+          setLoadingData(false)
       })
       .catch(err => {
         console.error(err);
@@ -116,30 +123,22 @@ function Dashboard() {
         </section>
 
         {/* main content */}
+
+        {loadingData ? 
+        <div className="spinner">
+          <div className="spinner__center"></div>
+        </div> :
         <section className="stats-section">
           <div className="stats-section__row">
           <aside className="stats-section__left">
             <Sidebar countries={sidebarData} total={countryInfo.cases} global={global} handleCountryChange={handleCountryChange}/>
           </aside>
           <article className="stats-section__right">
-                    <header className="map__header">
-                <h4 className="map__header--title">Covid-19 Infected Areas</h4>
-                <div className="map__header--legend">
-                    <div onClick={(e) => setAffected('most')}>
-                        <VscCircleFilled />
-                        <span>Most affected</span>
-                    </div>
-                    <div onClick={(e) => setAffected('least')}>
-                         <VscCircleFilled id="second" />
-                         <span>Least affected</span>
-                    </div>
-                    
-                </div>
-            </header>
-            <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} affected={affected} />
+             
+            <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} affected={affected} setAffected={setAffected} />
           </article>
           </div>
-        </section>
+        </section>}
 
         </>
     )

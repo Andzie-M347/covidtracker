@@ -1,0 +1,24 @@
+.primary-button {
+    color: #ffffff;
+    border: none;
+    background-color: var(--accent-color);
+    background-image: -webkit-linear-gradient(left, var(--accent-color) 0%, var(--alt-color) 50%, var(--accent-color) 100%);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    background-size: 200% 100%;
+    padding: 1.235rem 4.475rem !important;
+    box-shadow: 0 4px 8px var(--accent-grey);
+    box-shadow: var(--shadow);
+    border-radius: 9rem;
+    cursor: pointer;
+    transform: translateY(0);
+
+    &:hover {
+        color: #ffffff;
+        background-color: var(--alt-color);
+        border: none;
+        background-position: 100% 0;
+        opacity: 0.85;
+        transform: translateY(-0.15rem);
+    }
+}
