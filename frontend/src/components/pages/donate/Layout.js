@@ -3,7 +3,7 @@ import {GrPaypal, SiMastercard, GiTakeMyMoney} from 'react-icons/all';
 
 import ImageFirst from '../../../assets/images/about-img.jpg';
 import ImageSecond from '../../../assets/images/about-img-2.jpg';
-import Contact from '../../Contact';
+import Contact from '../../contact/Contact';
 
 
 function Layout() {

@@ -39,6 +39,17 @@
 }
 
 
+.active {
+    color: var(--danger-color) !important;
+}
+.active-recovered {
+    color: var(--success-color) !important;
+}
+
+.errors {
+    color: var(--danger-color) ;
+}
+
 @keyframes anim9 {
     to {
         transform: rotate(360deg);

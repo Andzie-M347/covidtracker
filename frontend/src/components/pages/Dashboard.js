@@ -87,7 +87,7 @@ function Dashboard() {
           setCountryInfo(data);
 
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-          setMapZoom(6);
+          setMapZoom(5);
       })
       .catch(err => {
           console.error(err);

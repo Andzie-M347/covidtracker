@@ -11,7 +11,7 @@ const casesTypeColors = {
 
   recovered: {
     hex: "#00DB75",
-    mulitiplier: 950,
+    mulitiplier: 1200,
   },
 
 };

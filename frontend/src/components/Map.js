@@ -1,7 +1,6 @@
 import React from 'react';
 import {MapContainer, TileLayer, useMap} from 'react-leaflet';
 import { showDataOnMap } from '../helpers';
-import './Map.css';
 import {VscCircleFilled} from 'react-icons/vsc';
 
 function Map({countries, affected, center, zoom, setAffected}) {
@@ -16,13 +15,23 @@ function Map({countries, affected, center, zoom, setAffected}) {
        <header className="map__header">
                 <h4 className="map__header--title">Covid-19 Infected Areas</h4>
                 <div className="map__header--legend">
-                    <div onClick={(e) => setAffected('cases')}>
+                    <div 
+                    onClick={(e) => setAffected('cases')}
+                    active={affected === 'cases'}
+                    >
                         <VscCircleFilled />
-                        <span>Total Cases</span>
+                        <span className={affected === 'cases' ? 'active' : 'not-active'}> 
+                            <strong >Total Cases </strong>
+                        </span>
                     </div>
-                    <div onClick={(e) => setAffected('recovered')}>
+                    <div 
+                    onClick={(e) => setAffected('recovered')}
+                    active={affected === 'recovered'}
+                    >
                          <VscCircleFilled id="second" />
-                         <span>Total Recovered</span>
+                         <span className={affected === 'recovered' ? 'active-recovered' : 'not-active'} >
+                             <strong> Total Recovered </strong>
+                          </span>
                     </div> 
                 </div>
             </header>

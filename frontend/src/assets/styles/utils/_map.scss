@@ -1,0 +1,122 @@
+.map {
+
+    height: 55rem;
+    padding: 1rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // margin-bottom: 2rem;
+        margin-top: 1.5rem;
+
+        &--legend {
+            display: flex;
+            align-items: center;
+
+            >div {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all .2s ease-in;
+            }
+
+            svg {
+                margin-right: 1.2rem;
+                position: relative;
+
+                &:first-child {
+                    height: 3rem;
+                    width: 3rem;
+                    stroke-width: .5;
+                    stroke: var(--danger-color);
+                    fill: var(--danger-color);
+                    fill-opacity: .54
+                }
+
+                &::before {
+                    content: 'hello';
+                }
+            }
+
+            #second {
+                height: 3rem;
+                width: 3rem;
+                stroke-width: 1;
+                stroke: var(--success-color);
+                fill: var(--success-color);
+                fill-opacity: .54
+            }
+
+            div:first-of-type {
+                margin-right: 2rem;
+
+                &:hover {
+                    color: var(--danger-color);
+                }
+            }
+
+            div:last-of-type {
+                &:hover {
+                    color: var(--success-color);
+                }
+            }
+
+        }
+    }
+
+
+    &__title {
+        margin-top: 1.456rem;
+        margin-bottom: 2rem;
+    }
+}
+
+
+// MAP RESET
+.leaflet-zoom-animated path {
+    // fill: var(--danger-color);
+    stroke-opacity: 0;
+}
+
+
+
+.leaflet-container {
+    height: 100%;
+}
+
+
+.popup {
+    display: flex;
+    justify-content: space-between;
+
+    &__flag {
+        height: 4rem;
+        width: 4rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        background-size: cover;
+        background-position: center;
+        margin-right: .735rem;
+    }
+
+    &__confirmed-cases {
+        color: var(--text-color);
+    }
+
+    &__name {
+        margin-bottom: .5rem;
+    }
+
+    &__recovered {
+        color: var(--success-color);
+    }
+
+    &__deaths {
+        color: var(--danger-color);
+    }
+
+    &__active {
+        color: rgb(233, 155, 12);
+    }
+}
